@@ -85,6 +85,26 @@ module.exports = {
     }
   },
 
- 
+  async addCommentToThought(req, res) {
+    const { thoughtId } = req.params;
+    const { commentBody, userId } = req.body;
+    try {
+      const thought = await Thought.findById(thoughtId);
+      if (!thought) {
+        return res.status(404).json({ message: 'Thought not found' });
+      }
+      const comment = {
+        commentBody,
+        userId,
+        thoughtsId: thoughtId,
+      };
+      thought.comments.push(comment);
+      await thought.save();
+      res.status(200).json(thought);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: error.message });
+    }
+  },
   
 };
