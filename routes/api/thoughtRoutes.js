@@ -27,5 +27,7 @@ router.post('/link', createThoughtAndLinkUser);
 // /api/users/:userId/thoughts
 router.get('/users/:userId/thoughts', getUserThoughts);
 
+// /api/thoughts/:thoughtId/comments
+router.post('/:thoughtId/comments', addCommentToThought); 
 
 module.exports = router;
