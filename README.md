@@ -20,6 +20,9 @@ When given a social network APIWhen you enter the command to invoke the applicat
 ## Installation
 npm i, and npm run seed.
 
+## Video tutorial
+https://drive.google.com/file/d/18vE7pcAvMaaVdRTyI49z4uYyruHq966l/view?usp=sharing
+
 ## Usage
 Have to install.
 
