@@ -23,6 +23,9 @@ router
   // /api/users/:userId/thoughts
 router.get('/:userId/thoughts', getUserThoughts);
 
-
+// /api/users/:userId/friends/:friendId
+router.route('/:userId/friends/:friendId')
+  .post(addFriend)
+  .delete(removeFriend);
 
 module.exports = router;
