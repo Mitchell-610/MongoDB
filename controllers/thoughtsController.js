@@ -60,6 +60,16 @@ module.exports = {
     }
   },
 
+   async createThoughtAndLinkUser(req, res) {
+    const { userId, thoughtContent } = req.body;
+    try {
+      const thought = await Thought.create({ thought: thoughtContent });
+      await User.findByIdAndUpdate(userId, { $push: { thoughts: thought._id } });
+      await Thought.findByIdAndUpdate(thought._id, { $push: { users: userId } });
+      res.status(200).json(thought);
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  },
+
   
-  
-};
