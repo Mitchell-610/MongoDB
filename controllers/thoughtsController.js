@@ -10,6 +10,18 @@ module.exports = {
     }
   },
 
+  async getSingleThought(req, res) {
+    try {
+      const thought = await Thought.findOne({ _id: req.params.thoughtId });
+      if (!thought) {
+        return res.status(404).json({ message: 'No course with that ID' });
+      }
+      res.json(thought);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
+
  
   
 };
