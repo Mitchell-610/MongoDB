@@ -78,6 +78,16 @@ module.exports = {
     }
   },
 
-  
+   async addFriend(req, res) {
+    const { userId, friendId } = req.params; 
+    try {
+      await User.findByIdAndUpdate(userId, { $addToSet: { friends: friendId } });
+      await User.findByIdAndUpdate(friendId, { $addToSet: { friends: userId } });
+      res.status(200).json({ message: 'Friend added successfully!' });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  },
 
+ 
 };
