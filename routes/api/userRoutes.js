@@ -20,6 +20,9 @@ router
   .put(updateUser)
   .delete(deleteUser);
   
+  // /api/users/:userId/thoughts
+router.get('/:userId/thoughts', getUserThoughts);
+
 
 
 module.exports = router;
