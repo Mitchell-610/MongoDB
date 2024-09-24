@@ -89,5 +89,15 @@ module.exports = {
     }
   },
 
- 
+  async removeFriend(req, res) {
+    const { userId, friendId } = req.params;
+    try {
+      await User.findByIdAndUpdate(userId, { $pull: { friends: friendId } });
+      await User.findByIdAndUpdate(friendId, { $pull: { friends: userId } });
+      res.status(200).json({ message: 'Friend removed successfully!' });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  },
+
 };
