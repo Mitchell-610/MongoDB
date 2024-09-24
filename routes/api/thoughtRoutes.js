@@ -21,6 +21,11 @@ router
   .put(updateThought)
   .delete(deleteThought);
 
- 
+  // /api/thoughts/link
+router.post('/link', createThoughtAndLinkUser); 
+
+// /api/users/:userId/thoughts
+router.get('/users/:userId/thoughts', getUserThoughts);
+
 
 module.exports = router;
